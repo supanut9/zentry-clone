@@ -1,7 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import react from 'eslint-plugin-react';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
   { ignores: ['dist'] },
@@ -19,6 +21,13 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      react: react,
+      'simple-import-sort': simpleImportSort,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -28,6 +37,36 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+
+      // JSX Prop Sorting Rules
+      'react/jsx-sort-props': [
+        'error',
+        {
+          callbacksLast: true,
+          shorthandFirst: true,
+          shorthandLast: false,
+          multiline: 'last',
+          ignoreCase: true,
+          noSortAlphabetically: false,
+          reservedFirst: true,
+        },
+      ],
+
+      // JSX Formatting Rules
+      'react/jsx-first-prop-new-line': ['error', 'multiline'],
+      'react/jsx-max-props-per-line': [
+        'error',
+        {
+          maximum: 1,
+          when: 'multiline',
+        },
+      ],
+      'react/jsx-indent-props': ['error', 2],
+      'react/jsx-closing-bracket-location': ['error', 'tag-aligned'],
+
+      // Import Sorting
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
     },
   },
-]
+];
