@@ -83,11 +83,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .special-font b {
-    font-family: 'Zentry';
-    font-feature-settings: 'ss01' on;
-  }
-
   .hero-heading {
     @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
   }
@@ -109,6 +104,9 @@ body {
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
+  }
+
+  .animated-word b {
     font-family: 'Zentry';
     font-feature-settings: 'ss01' on;
   }

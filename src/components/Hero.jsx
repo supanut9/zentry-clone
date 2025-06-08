@@ -64,7 +64,7 @@ const Hero = () => {
 
         gsap.from('#next-video', {
           transformOrigin: 'center center',
-          scale: 0,
+          scale: 0.5,
           duration: 1.5,
           ease: 'power1.inOut',
         });
